@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function myfunc(a = 10, b = 20, c = 30) {
+    return a + b + c;
+  }
+
+  // 매개변수에 기본값을 부여한다.
+  // 함수 호출시에 매개변수 위치에 값을 안주면 기본값들을 적용하여 연산한다.
+  // 매개변수에 기본값을 부여할 때 기본값을 안주는 변수들을 먼저 기술하고, 기본값을 부여하는 변수들을 나중에 기술해야 한다.
+  // 함수의 이름은 무조건 달라야 한다. - 오버로딩 지원 안함
+  // 기본값을 통해 오버로딩과 동일한 효과를 얻는다.
+  console.log(myfunc()); // 10+20+30
+  console.log(myfunc(1)); // 1+20+30
+  console.log(myfunc(1, 2)); // 1+2+30
+  console.log(myfunc(1, 2, 3)); // 1+2+3
+
+  //1~10까지 합계를 구하는 함수
+  // function sigma() {
+  //   sum = 0;
+  //   for (i = 1; i <= 10; i++) {
+  //     sum += i;
+  //   }
+  //   return sum;
+  // }
+  function sigma(limit = 10) {
+    if (limit < 0) {
+      // 에러체크를 함수 들어가자마자 해서 에러에 해당되면 return으로 함수를 종료하자
+      return 0; //return 구문은 값을 보내기 위한 용도로만 쓰는 것은 아니고
+      // 함수를 종료하기 위한 목적으로도 사용한다.
+    }
+
+    sum = 0;
+    for (i = 1; i <= limit; i++) {
+      sum += i;
+    }
+    return sum;
+  }
+  let result = sigma();
+  console.log(result); // 55
+  console.log(sigma()); // 55
+
+  console.log(sigma(100)); //5050
+  console.log(sigma(1000)); //500500
+</script>
