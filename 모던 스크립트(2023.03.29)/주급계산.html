@@ -15,8 +15,6 @@
   <button type="button" onclick="goClear()">새로입력</button><br/>
   <!-- reset 태그는 input 태그들 값을 모두 초기화 한다.-->
 
-  <div id = "result"></div>
-
 </body>
 </html>
 
@@ -36,5 +34,11 @@
       + " 초과수당: " + 0
       + " 합: " + working_hour * hourly_sal;
     }
+  }
+
+  function goClear() {
+    document.getElementById("name").value = "";
+    document.getElementById("worktime").value ="";
+    document.getElementById("perpay").value ="";
   }
 </script>
