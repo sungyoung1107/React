@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let rect = [
+    { w: 1, h: 6 },
+    { w: 2, h: 7 },
+    { w: 3, h: 8 },
+    { w: 4, h: 9 },
+    { w: 5, h: 10 },
+  ];
+
+  // map
+  // let r = rect.map((r) => {
+  //   r.len = (r.w + r.h) * 2;
+  //   r.surface = r.w * r.h;
+  //   return r;
+  // });
+  // console.log(r);
+
+  // let rect2 = rect.map((r) => {
+  //   r.len = (r.w + r.h) * 2;
+  //   r.surface = r.w * r.h;
+  //   return rect;
+  // });
+  // console.log(rect2);
+
+  /************************************************/
+  /**************** map과 filter 차이 *************/
+  /************************************************/
+  /* https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-map-%EA%B3%BC-filter-%EC%B0%A8%EC%9D%B4 */
+
+  var testArray = [0, 1, 2, 3, 4, 5];
+
+  // filter의 콜백함수는 리턴값의 불리언이 true인 값만 가지고 배열을 만드는 역할
+  // 그래서 x <= 2에서 x값에 따라 저 조건식이 true이면 x를 그대로 저장
+
+  test_filter = testArray.filter((x) => {
+    return x <= 2;
+  }); // [0, 1, 2]
+  console.log(test_filter);
+
+  // map의 콜백함수는 산술된 인자를 받아 배열을 만드는 역할
+  // x <= 2를 받으면 그 산술 결과인 불리언값을 리턴해 배열을 만든다.
+
+  test_map1 = testArray.map((x) => {
+    return x <= 2;
+  }); // [true, true, true, false, false, false]
+  console.log(test_map1);
+
+  test_map2 = testArray.map((x) => {
+    if (x <= 2) return x;
+  }); // [0, 1, 2, undefined, undefined, undefined]
+  console.log(test_map2);
+
+  // 산술연산인 경우 //
+
+  // filter는 c*2를 산술이 아닌 논리로 본다. c*2는 0 빼고는 전부 true이니 0 빼고 다 출력
+  test_mul_filter = testArray.filter(function (c) {
+    return c * 2;
+  }); // [1, 2, 3, 4, 5]
+  console.log(test_mul_filter);
+
+  // map은 산술된 값을 리턴, 즉 c*2를 산술해서 배열을 넣어서 만드니까 원하는 값을 얻을 수 있다.
+  test_mul_map = testArray.map(function (c) {
+    return c * 2;
+  }); // [0, 2, 4, 6, 8, 10]
+  console.log(test_mul_map);
+</script>

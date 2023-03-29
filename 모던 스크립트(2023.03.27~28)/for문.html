@@ -52,4 +52,21 @@
     }
     if (flag) break;
   }
+
+  let colors = ["red", "green", "blue", "cyan"];
+
+  for (i = 0; i < colors.length; i++) {
+    console.log(colors[i]);
+  }
+  for (i in colors) {
+    console.log(colors[i]);
+  }
+  // of는 객체
+  for (i of colors) {
+    console.log(colors[i]);
+  }
+  // in는 인덱스여서 인덱스가 출력됨
+  for (item in colors) {
+    console.log(item);
+  }
 </script>

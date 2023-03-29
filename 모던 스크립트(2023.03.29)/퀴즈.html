@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    문제1 사각형 면적 구하기<br />
+    가로길이를 입력하세요
+    <input type="text" name="width" id="width" /><br />
+    세로길이를 입력하세요
+    <input type="text" name="height" id="height" /><br />
+    면적구하기
+    <button onclick="cal()">클릭</button>
+    <span id="result1"></span>
+
+    <hr />
+    <hr />
+    문제2 주급계산기<br />
+    이름을 입력하세요
+    <input type="text" name="name" id="name" /><br />
+    일주일간 근무시간을 입력하세요
+    <input type="text" name="working_hour" id="working_hour" /><br />
+    시간당 급여액을 입력하세요
+    <input type="text" name="hourly_sal" id="hourly_sal" /><br />
+    주급구하기
+    <button onclick="cal2()">클릭</button>
+    기본급 : <span id="result2"></span> 초과수당 : <span id="result3"></span> 합
+    : <span id="result4"></span>
+  </body>
+</html>
+
+<script>
+  function cal() {
+    // console.log("여기");
+    width = document.getElementById("width").value;
+    height = document.getElementById("height").value;
+
+    document.getElementById("result1").innerHTML =
+      parseInt(width) * parseInt(height);
+  }
+
+  function cal2() {
+    // console.log("여기");
+    working_hour = parseInt(document.getElementById("working_hour").value);
+    hourly_sal = parseInt(document.getElementById("hourly_sal").value);
+
+    if (working_hour > 20) {
+      document.getElementById("result2").innerHTML = working_hour * hourly_sal;
+      document.getElementById("result3").innerHTML =
+        (working_hour - 20) * hourly_sal * 0.5;
+      document.getElementById("result4").innerHTML =
+        working_hour * hourly_sal + (working_hour - 20) * hourly_sal * 0.5;
+    } else {
+      document.getElementById("result2").innerHTML = working_hour * hourly_sal;
+      document.getElementById("result3").innerHTML = 0;
+      document.getElementById("result4").innerHTML = working_hour * hourly_sal;
+    }
+  }
+</script>

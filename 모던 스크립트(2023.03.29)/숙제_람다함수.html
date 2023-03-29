@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주급계산</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let emps = [
+    { name: "홍길동", working_hours: 40, hourly_sal: 10000 },
+    { name: "임꺽정", working_hours: 15, hourly_sal: 20000 },
+    { name: "장길산", working_hours: 20, hourly_sal: 20000 },
+    { name: "강감찬", working_hours: 30, hourly_sal: 15000 },
+    { name: "이순신", working_hours: 40, hourly_sal: 30000 },
+  ];
+
+  // forEach로 출력
+  emps.forEach((x) => {
+    console.log(
+      `이름 : ${x.name}, 근무시간 : ${x.working_hours}, 시간당급여액 : ${x.hourly_sal}`
+    );
+  });
+
+  // 장씨만 출력
+  emp_jang = emps.filter((x) => {
+    return x.name.substr(0, 1) == "장";
+  });
+  console.log(emp_jang);
+
+  // sal 곱하기 10하여 반환
+  emp_mul_10 = emps.map((x) => {
+    x.hourly_sal = x.hourly_sal * 10;
+    return x;
+  });
+  console.log(emp_mul_10);
+
+  // 장씨만 sal 곱하기 10하여 반환
+  emp_jang_mul_10 = emps
+    .filter((x) => {
+      return x.name.substr(0, 1) == "장";
+    })
+    .map((y) => {
+      y.hourly_sal = y.hourly_sal * 10;
+      return y;
+    });
+  console.log(emp_jang_mul_10);
+
+  let stus = [
+    { name: "홍길동", kor: 40, eng: 50, mat: 60 },
+    { name: "임꺽정", kor: 10, eng: 20, mat: 30 },
+    { name: "장길산", kor: 70, eng: 80, mat: 90 },
+    { name: "강감찬", kor: 100, eng: 0, mat: 100 },
+    { name: "이순신", kor: 0, eng: 100, mat: 0 },
+  ];
+
+  // 총점 평균 구하기
+  stus
+    .map((item) => {
+      item.total = item.kor + item.eng + item.mat;
+      item.avg = item.total / 3;
+      return item;
+    })
+    .forEach((item) => {
+      console.log(`${item.name} ${item.avg}`);
+    });
+
+  /***************************************/
+  /************ 연습하기 *****************/
+  /***************************************/
+  let array = [3, 5, 8, 6, 7, 11, 15, 14, 22];
+  /* 1과 2 동일 */
+  // 1
+  result = array.filter((x) => {
+    return x % 2 == 0;
+  });
+  console.log(result);
+  // 2
+  result1 = array.filter((x) => {
+    if (x % 2 == 0) return x;
+  });
+  console.log(result1);
+
+  result2 = array.map((x) => {
+    return x * 20;
+  });
+  console.log(result2);
+</script>

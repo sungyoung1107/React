@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 시스템에서 호출되는 onclick같은 함수를 콜백함수라고 한다.
+    간접적으로 호출하는 것이다. 실제로 우리가 함수를 구현했지만, 호출하는 것은 버튼 클릭시에 한다.-->
+    <button type="button" onclick="goDisplay()">
+      버튼을 누르세요(함수선언식)
+    </button>
+    <button type="button" id="btnPress">버튼을 누르세요(함수표현식)</button>
+    <button type="button" id="btnPress2">버튼을 누르세요(화살표함수)</button>
+    <!--
+    <button>버튼을 누르세요</button> 이 것은 1번에 해당된다. 
+    1. <input type="submit"> 무조건 서버로 정보를 전송한다. 회원가입시 두번씩 할 수도 있음.
+    2. <input type="button"> 이벤트만 발생시킨다.
+
+
+  --></body>
+</html>
+<script>
+  // 함수선언
+  function goDisplay() {
+    alert("button 눌림");
+  }
+  // 초창기에는 script를 헤더에 놓았음
+  // 함수 표현식은 함수 이름을 주지 않고, 만든 후 함수 주소를 저장
+  // click시 함수를 매개변수로 입력
+  window.onload = function () {
+    document.getElementById("btnPress").addEventListener("click", function () {
+      alert("두번째 버튼");
+    });
+  };
+
+  document
+    .getElementById("btnPress2")
+    .addEventListener("click", () => alert("세번째 버튼"));
+</script>

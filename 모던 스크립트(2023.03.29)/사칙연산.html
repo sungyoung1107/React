@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    x : <input type="text" name="xvalue" id="xvalue" /><br />
+    y : <input type="text" name="yvalue" id="yvalue" /><br />
+
+    <!-- <button onclick="add()">더하기</button>&nbsp;&nbsp;
+    <span id="result1"></span>
+    <button onclick="abs()">뺴기</button>&nbsp;&nbsp;
+    <span id="result2"></span>
+    <button onclick="mul()">곱하기</button>&nbsp;&nbsp;
+    <span id="result3"></span>
+    <button onclick="div()">나누기</button>&nbsp;&nbsp;
+    <span id="result4"></span> -->
+
+    <button onclick="cal('+')">더하기</button>&nbsp;&nbsp;
+    <span id="result1"></span>
+    <button onclick="cal('-')">뺴기</button>&nbsp;&nbsp;
+    <span id="result2"></span>
+    <button onclick="cal('*')">곱하기</button>&nbsp;&nbsp;
+    <span id="result3"></span>
+    <button onclick="cal('/')">나누기</button>&nbsp;&nbsp;
+    <span id="result4"></span>
+  </body>
+</html>
+<script>
+  // function add() {
+  //   x = document.getElementById("xvalue").value;
+  //   y = document.getElementById("yvalue").value;
+  //   document.getElementById("result1").innerHTML = parseInt(x) + parseInt(y);
+  // }
+
+  // function abs() {
+  //   x = document.getElementById("xvalue").value;
+  //   y = document.getElementById("yvalue").value;
+  //   document.getElementById("result2").innerHTML = parseInt(x) - parseInt(y);
+  // }
+
+  // function mul() {
+  //   x = document.getElementById("xvalue").value;
+  //   y = document.getElementById("yvalue").value;
+  //   document.getElementById("result3").innerHTML = parseInt(x) * parseInt(y);
+  // }
+
+  // function div() {
+  //   x = document.getElementById("xvalue").value;
+  //   y = document.getElementById("yvalue").value;
+  //   document.getElementById("result4").innerHTML = parseInt(x) / parseInt(y);
+  // }
+
+  function cal(ope) {
+    x = document.getElementById("xvalue").value;
+    y = document.getElementById("yvalue").value;
+
+    switch (ope) {
+      case "+":
+        document.getElementById("result1").innerHTML =
+          parseInt(x) + parseInt(y);
+        break;
+      case "-":
+        document.getElementById("result2").innerHTML =
+          parseInt(x) - parseInt(y);
+        break;
+      case "*":
+        document.getElementById("result3").innerHTML =
+          parseInt(x) * parseInt(y);
+        break;
+      case "/":
+        document.getElementById("result4").innerHTML =
+          parseInt(x) / parseInt(y);
+        break;
+    }
+  }
+</script>
