@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>성적관리프로그램(제이쿼리)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <span>이름입력</span>&nbsp;&nbsp;<input type="text" id="name" /><br /><br />
+    <span>국어성적</span>&nbsp;&nbsp;<input type="text" id="kor" /><br /><br />
+    <span>영어성적</span>&nbsp;&nbsp;<input type="text" id="eng" /><br /><br />
+    <span>수학성적</span>&nbsp;&nbsp;<input type="text" id="mat" /><br /><br />
+    <button type="button" id="btn1">총점과 평균 결과를 확인해보세요!</button>
+    <button type="button" id="btn2">초기화</button><br />
+    <div id="result"></div>
+  </body>
+</html>
+
+<script>
+  $(document).ready(() => {
+    $("#btn1").click(() => {
+      let name = $("#name").val();
+      let kor = parseInt($("#kor").val());
+      let eng = parseInt($("#eng").val());
+      let mat = parseInt($("#mat").val());
+
+      if (
+        kor < 0 ||
+        kor > 100 ||
+        eng < 0 ||
+        eng > 100 ||
+        mat < 0 ||
+        mat > 100
+      ) {
+        alert("성적은 0~100점까지 입력 가능합니다. 다시 입력해주세요.");
+        $("input").val("");
+      } else {
+        let sum = kor + eng + mat;
+        let avg = Math.floor((kor + eng + mat) / 3);
+        $("#result").html(
+          `${name}님의 총점은 ${sum}점이고, 평균(소수점절사)은 ${avg}점입니다.`
+        );
+      }
+    });
+    $("#btn2").click(() => {
+      $("input").val("");
+      $("#result").empty();
+    });
+  });
+</script>
