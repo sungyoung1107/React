@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <button type="button" id="btn1" style="background-color: moccasin">
+      배경색1
+    </button>
+    <button type="button" id="btn2" style="background-color: rgb(7, 167, 5)">
+      배경색2
+    </button>
+    <button
+      type="button"
+      id="btn3"
+      style="background-color: rgb(181, 234, 255)"
+    >
+      배경색3
+    </button>
+    <button type="button" id="btn4" style="background-color: rgb(30, 110, 181)">
+      배경색4
+    </button>
+    <button type="button" id="btn5" style="background-color: rgb(187, 65, 163)">
+      배경색5
+    </button>
+    <button type="button" id="btn6" style="background-color: rgb(169, 132, 68)">
+      배경색6
+    </button>
+    <button
+      type="button"
+      id="btn7"
+      style="background-color: rgb(216, 220, 106)"
+    >
+      배경색7
+    </button>
+  </body>
+</html>
+
+<script>
+  // $(document).ready(() => {
+  //   $("#btn1").click(() => {
+  //     $("body").css("background-color", $("#btn1").css("background-color"));
+  //   });
+  // });
+
+  // 여러개의 버튼이 하나의 함수를 공유할 때 매개변수를 붙이고
+  // 이벤트가 발생한 객체를 전달한다.
+  // $(document).ready(() => {
+  //   $("button").click((btn) => {
+  //     console.log(btn);
+  //     $("body").css(
+  //       "background-color",
+  //       $("#" + btn.target.id).css("background-color")
+  //     );
+  //   });
+  // });
+
+  $(document).ready(() => {
+    $("button").click(() => {
+      console.log(this);
+      $("body").css("background-color", $(this).css("background-color"));
+    });
+  });
+</script>

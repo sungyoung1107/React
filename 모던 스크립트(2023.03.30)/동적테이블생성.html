@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table style="width: 80%; margin: auto; border: blue 1px solid">
+      <!--열별로 스타일 지정하기 위한 목적-->
+      <colgroup>
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+      </colgroup>
+      <thead>
+        <th>품목</th>
+        <th>개수</th>
+        <th>단가</th>
+      </thead>
+      <tbody id="tbody">
+        <tr>
+          <td>흑임자비비빅</td>
+          <td>100</td>
+          <td>800</td>
+        </tr>
+        <tr>
+          <td>망고젤리</td>
+          <td>200</td>
+          <td>500</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+
+<script>
+  let data = [
+    { name: "새우깡", count: 2, price: 2000 },
+    { name: "꿀꽈배기", count: 3, price: 2500 },
+    { name: "자갈치", count: 4, price: 3000 },
+    { name: "맛동산", count: 5, price: 3500 },
+    { name: "에이스", count: 6, price: 4000 },
+  ];
+
+  window.onload = () => {
+    load();
+  };
+
+  function load() {
+    var tbody = document.getElementById("tbody");
+    console.log(tbody.rows.length); // 데이터 갯수 확인
+    for (item of data) {
+      // row = tbody.insertRow(tbody.rows.length); // 맨 아래에 행추가
+      // cell1 = row.insertCell(0);
+      // cell2 = row.insertCell(1);
+      // cell3 = row.insertCell(2);
+      // cell1.innerHTML = data[0].name;
+      // cell2.innerHTML = data[1].count;
+      // cell3.innerHTML = data[2].price;
+      row = tbody.insertRow(tbody.rows.length); // 맨 아래에 행추가
+      cell1 = row.insertCell(0);
+      cell2 = row.insertCell(1);
+      cell3 = row.insertCell(2);
+      cell1.innerHTML = item.name;
+      cell2.innerHTML = item.count;
+      cell3.innerHTML = item.price;
+    }
+    // for (item of data) {
+    //   var row = tbody.insertRow(tbody.rows.length);
+    //   var cell1 = row.insertCell(0);
+    //   var cell2 = row.insertCell(1);
+    //   var cell3 = row.insertCell(2);
+    //   cell1.innerHTML = item.name;
+    //   cell1.innerHTML = item.count;
+    //   cell1.innerHTML = item.price;
+    // }
+  }
+</script>

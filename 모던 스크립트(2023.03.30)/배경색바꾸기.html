@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button
+      type="button"
+      id="btn1"
+      style="background-color: moccasin"
+      onclick="changeBackground(this)"
+    >
+      배경색1
+    </button>
+    <button
+      type="button"
+      id="btn2"
+      style="background-color: rgb(7, 167, 5)"
+      onclick="changeBackground(this)"
+    >
+      배경색2
+    </button>
+    <button
+      type="button"
+      id="btn3"
+      style="background-color: rgb(181, 234, 255)"
+      onclick="changeBackground(this)"
+    >
+      배경색3
+    </button>
+    <button
+      type="button"
+      id="btn4"
+      style="background-color: rgb(30, 110, 181)"
+      onclick="changeBackground(this)"
+    >
+      배경색4
+    </button>
+    <button
+      type="button"
+      id="btn5"
+      style="background-color: rgb(187, 65, 163)"
+      onclick="changeBackground(this)"
+    >
+      배경색5
+    </button>
+    <button
+      type="button"
+      id="btn6"
+      style="background-color: rgb(169, 132, 68)"
+      onclick="changeBackground(this)"
+    >
+      배경색6
+    </button>
+    <button
+      type="button"
+      id="btn7"
+      style="background-color: rgb(216, 220, 106)"
+      onclick="changeBackground(this)"
+    >
+      배경색7
+    </button>
+  </body>
+</html>
+
+<script>
+  function changeBackground(me) {
+    // event - 자바스크립트가 제공하는 내장객체, 발생한 이벤트에 대한 모든 정보를 가지고 있다.
+    console.log(event.target.id);
+
+    document.getElementsByTagName("body")[0].style.backgroundColor =
+      me.style.backgroundColor;
+  }
+</script>
