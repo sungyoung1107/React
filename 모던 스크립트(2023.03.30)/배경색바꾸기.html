@@ -69,7 +69,8 @@
 <script>
   function changeBackground(me) {
     // event - 자바스크립트가 제공하는 내장객체, 발생한 이벤트에 대한 모든 정보를 가지고 있다.
-    console.log(event.target.id);
+    console.log(event.target.id); // btn1, ...
+    console.log(me);
 
     document.getElementsByTagName("body")[0].style.backgroundColor =
       me.style.backgroundColor;

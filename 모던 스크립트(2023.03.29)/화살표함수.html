@@ -16,12 +16,12 @@
   console.log(add(4, 5));
 
   let sigma = (limit) => {
-    // 매개변수가 하나일 때 괄호도 생략 가능하다.
     sum = 1;
-    for (i = 1; i <= limit; i++) {
+    for (i = 1; i < limit; i++) {
       sum += i;
     }
     return sum;
-  }; // 매개변수가 하나일 때 괄호도 생략 가능
+  };
+
   console.log(sigma(10));
 </script>

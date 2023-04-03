@@ -21,6 +21,7 @@
   var results = document.getElementsByName("result");
   //실제로 같은 이름의 태그가 있는지는 중요하지 않다
   // name속성은 무조건 배열로 읽어온다.
+  // name 속성은 input 태그류만 있음.
   sum = 0;
   numbers.forEach((e) => {
     sum += parseInt(e.value);

@@ -26,12 +26,13 @@
       var child = document.createElement("li");
       // 3. li 태그 객체에 innerHTML을 넣는다.
       child.innerHTML = document.getElementById("product").value;
-      // 4. ul와 li를 묶는다.
+      // 4. ul과 li를 묶는다.
       coffee.appendChild(child);
 
       document.getElementById("product").value = "";
       document.getElementById("product").focus();
     });
+
     document.getElementById("btnDel").addEventListener("click", () => {
       var coffee = document.getElementById("coffee");
       console.log(coffee.children.length);

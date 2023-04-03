@@ -39,20 +39,20 @@
 <script>
   $(document).ready(() => {
     $("#btnAdd").click(() => {
-      // let temp = "<tr>";
-      // temp += "<td><input type='text' name='product_name'></td>";
-      // temp += "<td><input type='text' name='product_count'></td>";
-      // temp += "<td><input type='text' name='product_count'></td>";
-      // temp += "</tr>";
-      // $("#mytable > tbody:last").append(temp);
+      let temp = "<tr>";
+      temp += "<td><input type='text name='product_name'></td>";
+      temp += "<td><input type='text name='product_count'></td>";
+      temp += "<td><input type='text name='product_price'></td>";
+      temp += "</tr>";
+      $("#mytable > tbody:last").append(temp);
 
       // 백틱 사용
-      let temp2 = `<tr>
-      <td><input type='text' name='product_name'></td>
-      <td><input type='text' name='product_count'></td>
-      <td><input type='text' name='product_count'></td>
-      </tr>`;
-      $("#mytable > tbody:last").append(temp2);
+      // let temp2 = `<tr>
+      // <td><input type='text' name='product_name'></td>
+      // <td><input type='text' name='product_count'></td>
+      // <td><input type='text' name='product_count'></td>
+      // </tr>`;
+      // $("#mytable > tbody:lest").append(temp2);
     });
 
     $("#btnDel").click(() => {

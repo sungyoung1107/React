@@ -60,9 +60,12 @@
   // });
 
   $(document).ready(() => {
-    $("button").click(() => {
-      console.log(this);
-      $("body").css("background-color", $(this).css("background-color"));
+    $("button").click((event) => {
+      console.log(event);
+      $("body").css(
+        "background-color",
+        $(event.target).css("background-color")
+      );
     });
   });
 </script>
