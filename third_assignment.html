@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>성적관리프로그램</title>
+  </head>
+  <body>
+    <form name="myform" action="/result" method="get">
+      <input type="hidden" name="operator" id="operator" />
+      <span>이름입력</span>&nbsp;&nbsp;<input
+        type="text"
+        id="name"
+        name="name"
+      /><br /><br />
+      <span>국어성적</span>&nbsp;&nbsp;<input
+        type="text"
+        id="kor"
+        name="kor"
+        onkeyup="goKeyUp()"
+      /><br /><br />
+      <span>영어성적</span>&nbsp;&nbsp;<input
+        type="text"
+        id="eng"
+        name="eng"
+        onkeyup="goKeyUp()"
+      /><br /><br />
+      <span>수학성적</span>&nbsp;&nbsp;<input
+        type="text"
+        id="mat"
+        name="mat"
+        onkeyup="goKeyUp()"
+      /><br /><br />
+      <button type="button" id="btn1" onclick="showResult()">
+        총점과 평균 결과를 확인해보세요!
+      </button>
+      <button type="button" id="btn2" onclick="actReset()">초기화</button><br />
+    </form>
+    <!-- <div id="result"></div> -->
+  </body>
+</html>
+
+<script>
+  // 결과 확인 버튼
+  let btn1 = document.getElementById("btn1");
+  // 초기화 버튼
+  let btn2 = document.getElementById("btn1");
+
+  // 사전체크
+  function goKeyUp() {
+    let kor = parseInt(document.getElementById("kor").value);
+    let eng = parseInt(document.getElementById("eng").value);
+    let mat = parseInt(document.getElementById("mat").value);
+    if (kor < 0 || kor > 100) {
+      alert("성적은 0~100점까지 입력 가능합니다. 다시 입력해주세요.");
+      document.getElementById("kor").value = "";
+    }
+    if (eng < 0 || eng > 100) {
+      alert("성적은 0~100점까지 입력 가능합니다. 다시 입력해주세요.");
+      document.getElementById("eng").value = "";
+    }
+    if (mat < 0 || mat > 100) {
+      alert("성적은 0~100점까지 입력 가능합니다. 다시 입력해주세요.");
+      document.getElementById("mat").value = "";
+    }
+  }
+
+  // 결과보여주기
+  function showResult() {
+    let name = document.getElementById("name").value;
+    let kor = parseInt(document.getElementById("kor").value);
+    let eng = parseInt(document.getElementById("eng").value);
+    let mat = parseInt(document.getElementById("mat").value);
+
+    if (kor < 0 || kor > 100 || eng < 0 || eng > 100 || mat < 0 || mat > 100) {
+      alert("성적은 0~100점까지 입력 가능합니다. 다시 입력해주세요.");
+      actReset();
+    } else if (isNaN(kor) || isNaN(eng) || isNaN(mat)) {
+      alert("성적은 필수 입력해주세요.");
+      actReset();
+    } else {
+      document.getElementById("operator").value = "1";
+      document.myform.submit();
+    }
+  }
+
+  // 초기화
+  function actReset() {
+    document.getElementById("name").value = "";
+    document.getElementById("kor").value = "";
+    document.getElementById("eng").value = "";
+    document.getElementById("mat").value = "";
+  }
+</script>
