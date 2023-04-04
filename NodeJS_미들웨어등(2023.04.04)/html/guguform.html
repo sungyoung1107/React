@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="myform" action="/gugu">
+      <input type="hidden" name="operator" id="operator" />
+      몇단을 출력할까요?<input type="text" name="dan" id="dan" /><br />
+      <button type="button" id="gugudanButton">출력하기</button>
+    </form>
+  </body>
+</html>
+
+<script>
+  window.onload = () => {
+    let gugudanButton = document.getElementById("gugudanButton");
+    gugudanButton.addEventListener("click", () => {
+      document.forms[0].submit();
+      // document.getElementById("operator").value = "1";
+      // document.myform.submit();
+    });
+  };
+</script>
