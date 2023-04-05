@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>성적계산기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <form>
+      이름입력: <input name="name" id="name" /><br />
+      국어성적: <input name="kor" id="kor" /><br />
+      영어성적: <input name="eng" id="eng" /><br />
+      수학성적: <input name="mat" id="mat" /><br />
+      <button type="button" id="btn">총점과 평균 확인하기</button><br />
+      <!-- 총점 : <input name="sum" id="sum" /><br />
+      평균 : <input name="avg" id="avg" /><br /> -->
+      총점 : <span id="sum"></span><br />
+      평균 : <span id="avg"></span><br />
+    </form>
+  </body>
+</html>
+
+<script>
+  $(document).ready(() => {
+    $("#btn").click(() => {
+      // ajax 요청을 보낸다.
+
+      if (
+        $.isNumeric($("#kor").val()) &&
+        $.isNumeric($("#eng").val()) &&
+        $.isNumeric($("#mat").val())
+      ) {
+        if (
+          $("#kor").val() < 0 ||
+          $("#kor").val() > 100 ||
+          $("#eng").val() < 0 ||
+          $("#eng").val() > 100 ||
+          $("#mat").val() < 0 ||
+          $("#mat").val() > 100
+        ) {
+          alert("성적은 0~100 사이로만 입력 가능합니다.");
+          $("#kor").val("");
+          $("#eng").val("");
+          $("#mat").val("");
+          return;
+        }
+      } else {
+        alert("성적은 숫자로 입력되어야 합니다.");
+        $("#kor").val("");
+        $("#eng").val("");
+        $("#mat").val("");
+        return;
+      }
+
+      $.ajax({
+        url: "/ajax/score",
+        data: {
+          kor: $("#kor").val(),
+          eng: $("#eng").val(),
+          mat: $("#mat").val(),
+        },
+        dataType: "json",
+      })
+        .done((res, status, error) => {
+          console.log(res);
+          // $("#sum").val(res.sum);
+          // $("#avg").val(res.avg);
+          $("#sum").text(res.sum);
+          $("#avg").text(res.avg);
+        })
+        .fail((res, status, error) => {
+          console.log(status);
+          console.log(error);
+        });
+    });
+  });
+</script>

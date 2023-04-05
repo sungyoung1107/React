@@ -58,10 +58,10 @@
             </tr>
             <tr>
               <td>내용</td>
-              <td><textarea cols="50" name="contents"></textarea></td>
+              <td><textarea col="60" name="contents"></textarea></td>
             </tr>
             <tr>
-              <td colspan="2">
+              <td colgroup="2">
                 <button type="button" id="btnSave">저장</button>
               </td>
             </tr>
@@ -73,12 +73,16 @@
 </html>
 
 <script>
+  // 이 클릭 이벤트 리스너 함수는 document.myform.method과 document.myform.action 속성을 수정하고,
+  // submit() 메서드를 호출합니다.
+  // 이를 통해, myform이라는 이름을 가진 HTML 폼 요소의 method 속성은 post로, action 속성은 /board/save로 변경됩니다.
+  // 그리고, submit() 메서드를 호출함으로써 폼 요소가 서버로 제출됩니다.
   window.onload = () => {
     let btnSave = document.getElementById("btnSave");
     btnSave.addEventListener("click", () => {
       document.myform.method = "post";
       document.myform.action = "/board/save";
-      document.myform.submit();
+      document.myform.submit(); // 서버로 제출
     });
   };
 </script>

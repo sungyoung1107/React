@@ -35,50 +35,48 @@
     </div>
     <div class="container" style="margin-top: 20px">
       <h3 style="text-align: center">게시판</h3>
-      <form name="myform">
-        <table class="table table-hover">
-          <colgroup>
-            <col style="width: 30%" />
-            <col style="width: 70%" />
-          </colgroup>
-          <thead>
-            <tr>
-              <th>항목</th>
-              <th>내용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>제목</td>
-              <td><input type="text" name="title" /></td>
-            </tr>
-            <tr>
-              <td>작성자</td>
-              <td><input type="text" name="writer" /></td>
-            </tr>
-            <tr>
-              <td>내용</td>
-              <td><textarea cols="50" name="contents"></textarea></td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <button type="button" id="btnSave">저장</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
+      <table class="table table-hover">
+        <colgroup>
+          <col style="width: 30%" />
+          <col style="width: 70%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>내용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>번호</td>
+            <td><%=score.id%></td>
+          </tr>
+          <tr>
+            <td>이름</td>
+            <td><%=score.name%></td>
+          </tr>
+          <tr>
+            <td>국어</td>
+            <td><%=score.kor%></td>
+          </tr>
+          <tr>
+            <td>영어</td>
+            <td><%=score.eng%></td>
+          </tr>
+          <tr>
+            <td>수학</td>
+            <td><%=score.mat%></td>
+          </tr>
+          <tr>
+            <td>총점</td>
+            <td><%=score.kor+score.eng+score.mat%></td>
+          </tr>
+          <tr>
+            <td>평균</td>
+            <td><%=(score.kor+score.eng+score.mat)/3%></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </body>
 </html>
-
-<script>
-  window.onload = () => {
-    let btnSave = document.getElementById("btnSave");
-    btnSave.addEventListener("click", () => {
-      document.myform.method = "post";
-      document.myform.action = "/board/save";
-      document.myform.submit();
-    });
-  };
-</script>
