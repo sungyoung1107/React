@@ -1,9 +1,17 @@
+// 자주 사용하는 모듈 불러오기
+// http 오류를 생성하는데 사용되는 모듈
 var createError = require("http-errors");
+// Express.js 프레임워크 모듈
 var express = require("express");
+// 파일 경로와 관련된 기능을 제공하는 모듈
 var path = require("path");
+// 쿠키 파싱을 처리하는 미들웨어
 var cookieParser = require("cookie-parser");
+// 로그를 기록하는 미들웨어
 var logger = require("morgan");
 
+// 라우팅 구현하기
+// ./ 현재 디렉토리를 의미
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var guestRouter = require("./routes/guestbook"); // 모듈을 메모리로 가져온다.
@@ -43,7 +51,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 // url이 /guestbook으로 시작할 경우 guestRouter가 처리한다.
-app.use("/guestbook", guestRouter);
+app.user("/guestbook", guestRouter);
 app.use("/ajax", ajaxRouter);
 
 // catch 404 and forward to error handler

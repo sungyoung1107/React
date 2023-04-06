@@ -1,0 +1,13 @@
+DB 생성
+create database mydb default character set utf8;
+
+사용자 계정 생성. IDENTIFIED BY 뒤에는 비밀번호
+CREATE USER USER01 IDENTIFIED BY '1234';
+
+계정 권한 주기. mydb에 대한 모든 접근 권한을 계정명@localhost
+local에서만 권한을 주는 것이다. 지금 이 컴퓨터에서만 권한을 주는 것이다.
+GRANT ALL PRIVILEGES ON mydb.* TO USER01@localhost IDENTIFIED BY '1234';
+
+새로운 계정으로 시작하기
+mysql -u USER01 -p
+Enter password: 1234
