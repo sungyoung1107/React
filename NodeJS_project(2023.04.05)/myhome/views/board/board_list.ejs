@@ -13,46 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mynavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mynavbar">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">Link</a>
-            </li>
-          </ul>
-          <div class="d-flex">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-
+    <%-include('../layout/header.ejs')%>
     <div class="container" style="margin-top: 80px">
       <h2>게시판 목록</h2>
 
@@ -78,7 +39,6 @@
           <tr>
             <th>id</th>
             <th>제목</th>
-            <!-- <th>내용</th> -->
             <th>작성자</th>
             <th>작성일</th>
           </tr>
@@ -88,15 +48,16 @@
           <tr>
             <td><a href="/board/view/<%=item.id%>"><%=item.id%></a></td>
             <td><a href="/board/view/<%=item.id%>"><%=item.title%></a></td>
-            <!-- <td>
-              <a href="/board/view/<%=item.id%>"><%=item.contents%></a>
-            </td> -->
             <td><%=item.writer%></td>
             <td><%=item.wdate%></td>
           </tr>
           <% } %>
         </tbody>
       </table>
+
+      <a href="/board/write" class="btn btn-secondary" style="float: right"
+        >글쓰기</a
+      >
 
       <ul class="pagination justify-content-center">
         <li class="page-item disabled">
@@ -114,13 +75,47 @@
         <li class="page-item"><a class="page-link" href="#">last</a></li>
       </ul>
 
-      <div class="container mt-3" style="text-align: right">
+      <!-- <div class="container mt-3" style="text-align: right">
         <a href="#" class="btn btn-secondary">Link Button</a>
         <button type="button" class="btn btn-secondary">Button</button>
         <input type="button" class="btn btn-secondary" value="Input Button" />
         <input type="submit" class="btn btn-secondary" value="Submit Button" />
         <input type="reset" class="btn btn-secondary" value="Reset Button" />
-      </div>
+      </div> -->
     </div>
   </body>
 </html>
+
+<script>
+  /* https://stickode.tistory.com/646 */
+  /*
+  totalPage : 총 게시글 수
+  pageNum : 한 페이지당 출력되는 게시글 갯수
+  blockNum : 한번에 출력될 수 있는 최대 블록 수
+  totalBlock : 블록의 총 수
+  currentBlock : 현재 블록
+  data : 게시글 데이터를 담고 있는 객체 배열
+  printData(block) : 게시글 데이터 출력하기 / 매개변수 : 선택 블럭
+  blockPrint(front_block) : 블럭 출력하기 / 매개변수 : 가장 앞에 오는 블럭
+  */
+
+  // 총 게시글 수
+  let totalPage = 1000;
+  // 한 페이지 당 출력되는 게시글 갯수
+  let pageNum = 5;
+  // 한번에 출력될 수 있는 최대 블록 수
+  let blockNum = 5;
+  // 블록의 총 수를 계산한다.
+  let totalBlock =
+    totalPage % pageNum == 0 ? totalPage / pageNum : totalPage / pageNum + 1;
+  // 현재 블록 위치
+  let currentBlock = 1;
+
+  /*
+게시글 데이터를 담고 있는 객체 배열
+*/
+  let data = new Array();
+
+  // 게시글
+  for (let i = 1; i <= totalPage; i++) {}
+</script>

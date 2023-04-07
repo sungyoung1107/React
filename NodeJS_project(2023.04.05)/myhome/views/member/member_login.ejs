@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <form id="myform" name="myform">
+      <%-include('../layout/header.ejs')%>
+      <div class="container mt-3">
+        <h1 style="margin-top: 50px">로그인</h1>
+
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="userid"
+            name="userid"
+            placeholder="아이디"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="패스워드"
+          />
+        </div>
+
+        <div class="container" style="text-align: right">
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" onclick="goWrite()">
+              로그온</button
+            >&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary" onclick="goCancel()">
+              취소</button
+            >&nbsp;&nbsp;
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
+
+<script>
+  function goWrite() {
+    let params = $("#myform").serialize(); // POST여야 하고, 파일 전송시 사용 못한다.
+    console.log(params);
+    $.ajax({
+      url: "/member/logingo",
+      data: params,
+      method: "post",
+      dataType: "json",
+    })
+      .then((result) => {
+        if (result.result == "success") {
+          alert("로그인 성공! ");
+          location.href = "../board"; // GET방식, a - anchor 태그
+        } else if (result.result == "fail_id") {
+          alert("ID가 일치하지 않습니다.");
+          // 초기화 작업
+          $("#userid").val("");
+          $("#password").val("");
+        } else if (result.result == "fail_pw") {
+          alert("비밀번호가 일치하지 않습니다.");
+          // 초기화 작업
+          $("#userid").val("");
+          $("#password").val("");
+        } else {
+          alert("로그인에 실패하였습니다. ");
+          // 초기화 작업
+          $("#userid").val("");
+          $("#password").val("");
+        }
+      })
+      .catch((res, status, error) => {
+        console.log(status);
+      });
+  }
+
+  function goCancel() {
+    var frm = document.form;
+    frm.action = "/board/list";
+    frm.submit();
+  }
+</script>

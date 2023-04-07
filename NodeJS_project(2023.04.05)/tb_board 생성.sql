@@ -16,3 +16,5 @@ VALUES ('제목1','홍길동','내용1', NOW());
 
 SELECT count(id) AS lg
 FROM tb_board;
+
+SELECT * FROM tb_board;

@@ -12,6 +12,8 @@ const DBInfo = {
 };
 
 let readpool = mysql.createPool(DBInfo);
+// params는 선택적 매개변수임
+//  if (params === undefined) { params = []; }// 대체값 할당
 async function mysqlRead(sql, params) {
   let promise = new Promise((resolve, reject) => {
     readpool.getConnection((err, conn) => {
@@ -33,3 +35,4 @@ async function mysqlRead(sql, params) {
 }
 
 exports.mysqlRead = mysqlRead;
+exports.DBInfo = DBInfo;
