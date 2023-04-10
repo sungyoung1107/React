@@ -56,8 +56,33 @@ router.use("/save", async function (req, res, next) {
 });
 
 // /member/login
-router.use("/login", async function (req, res, next) {
+// 경로가 /login 으로 같은 경우 get방식, post방식 다르게 해야 한다. use는 둘다 사용해야 가능하므로 사용하면 안된다.
+router.get("/login", async function (req, res, next) {
   res.render("member/member_login.ejs");
+});
+
+router.post("/login", async function (req, res, next) {
+  let userid = req.body.userid;
+  let password = req.body.password;
+  let sql = `select * from tb_member where userid='${userid}'`;
+  let results = await commonDB.mysqlRead(sql); // 배열 반환
+  if (results.length == 0) {
+    res.json({ result: "fail", msg: "아이디가 없습니다" });
+    return;
+  }
+  if (results[0]["password"] != password) {
+    res.json({ result: "fail", msg: "패스워드가 일치하지 않습니다." });
+    return;
+  }
+  req.session["username"] = results[0]["username"];
+  req.session["userid"] = results[0]["userid"];
+  req.session["email"] = results[0]["email"];
+
+  console.log(results[0]["username"]);
+  console.log(results[0]["userid"]);
+  console.log(results[0]["email"]);
+
+  res.json({ result: "success", msg: "로그온 성공" });
 });
 
 router.use("/logingo", async function (req, res, next) {
@@ -105,6 +130,13 @@ router.get("/put", async function (req, res, next) {
   let userid = req.query.userid;
   req.session["userid"] = userid;
   console.log(req.session["userid"]);
+});
+
+router.get("/logout", async function (req, res, next) {
+  req.session["userid"] = "";
+  req.session["username"] = "";
+  req.session["email"] = "";
+  res.redirect("/"); // 로그아웃하고 나면 index로 이동하기
 });
 
 module.exports = router;

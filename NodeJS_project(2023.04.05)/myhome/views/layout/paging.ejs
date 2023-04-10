@@ -1,0 +1,45 @@
+<ul class="pagination justify-content-center">
+  <li class="page-item">
+    <a class="page-link" href="javascript:goPage('1')">first</a>
+  </li>
+  <% if(paging.pg ==1) {%>
+  <li class="page-item disabled">
+    <a class="page-link" href="#none">Previous</a>
+  </li>
+  <%}else{%>
+  <li class="page-item">
+    <a class="page-link" href="javascript:goPage(<%=paging.pg-1%>)">Previous</a>
+  </li>
+  <%}%>
+
+  <!-- 선택한 한목을 파랑게 보이도록 한다. -->
+  <% for(var i = paging.pnStart; i<paging.pnEnd ; i++) { classType="";
+  if(i==pg){ classType="active"; } %>
+  <li class="page-item <%=classType%>">
+    <a class="page-link" href="javascript:goPage('<%=i%>')"><%=i%></a>
+  </li>
+  <% } %>
+  <!-- <li class="page-item">
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="javascript:goPage('2')">2</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="javascript:goPage('3')">3</a>
+  </li> -->
+  <!-- <li class="page-item"><a class="page-link" href="#">4</a></li>
+  <li class="page-item"><a class="page-link" href="#">5</a></li> -->
+
+  <% if(paging.pg == paging.pnTotal) {%>
+  <li class="page-item disabled">
+    <a class="page-link" href="#">Next</a>
+  </li>
+  <%}else{%>
+  <li class="page-item">
+    <a class="page-link" href="javascript:goPage(<%=paging.pg+1%>)">Next</a>
+  </li>
+  <%}%>
+  <li class="page-item">
+    <a class="page-link" href="javascript:goPage(<%=paging.pnTotal%>)">last</a>
+  </li>
+</ul>

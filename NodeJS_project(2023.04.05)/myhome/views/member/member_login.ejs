@@ -40,10 +40,20 @@
 
         <div class="container" style="text-align: right">
           <div class="btn-group">
-            <button type="button" class="btn btn-primary" onclick="goWrite()">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btnLogon"
+              onclick="goLogon()"
+            >
               로그온</button
             >&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary" onclick="goCancel()">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btnCancel"
+              onclick="goCancel()"
+            >
               취소</button
             >&nbsp;&nbsp;
           </div>
@@ -90,8 +100,34 @@
   }
 
   function goCancel() {
-    var frm = document.form;
+    let frm = document.form;
     frm.action = "/board/list";
     frm.submit();
+  }
+
+  $(document).ready(() => {
+    $("#btnLogon").click(goLogon);
+    // goLogon()- 함수를 실행한 결과가 전달
+    // goLogon - 함수의 주소만 전달
+    $("#btnCancel").click(goCancel);
+  });
+
+  function goLogon() {
+    $.ajax({
+      url: "/member/login",
+      data: { userid: $("#userid").val(), password: $("#password").val() },
+      dataType: "json",
+      method: "post",
+    })
+      .done((res) => {
+        console.log(res.result);
+        if (res.result == "success") {
+          alert(res.msg);
+          location.href = "/";
+        }
+      })
+      .fail((res, status, error) => {
+        console.log(status);
+      });
   }
 </script>
