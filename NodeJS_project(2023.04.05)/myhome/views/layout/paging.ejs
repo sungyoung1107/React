@@ -19,20 +19,21 @@
     <a class="page-link" href="javascript:goPage('<%=i%>')"><%=i%></a>
   </li>
   <% } %>
-  <!-- <li class="page-item">
-  </li>
+  <!-- 
+  <li class="page-item"></li>
   <li class="page-item">
     <a class="page-link" href="javascript:goPage('2')">2</a>
   </li>
   <li class="page-item">
     <a class="page-link" href="javascript:goPage('3')">3</a>
   </li> -->
+
   <!-- <li class="page-item"><a class="page-link" href="#">4</a></li>
   <li class="page-item"><a class="page-link" href="#">5</a></li> -->
 
   <% if(paging.pg == paging.pnTotal) {%>
   <li class="page-item disabled">
-    <a class="page-link" href="#">Next</a>
+    <a class="page-link" href="#none">Next</a>
   </li>
   <%}else{%>
   <li class="page-item">

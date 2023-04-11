@@ -74,6 +74,8 @@ router.post("/login", async function (req, res, next) {
     res.json({ result: "fail", msg: "패스워드가 일치하지 않습니다." });
     return;
   }
+
+  // 세션에 사용자 정보 저장
   req.session["username"] = results[0]["username"];
   req.session["userid"] = results[0]["userid"];
   req.session["email"] = results[0]["email"];
@@ -85,6 +87,7 @@ router.post("/login", async function (req, res, next) {
   res.json({ result: "success", msg: "로그온 성공" });
 });
 
+// 내가 만든 것
 router.use("/logingo", async function (req, res, next) {
   let userid = req.body.userid;
   let password = req.body.password;

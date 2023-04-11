@@ -104,7 +104,7 @@
           />
           <input
             type="button"
-            onclick="sample4_execDaumPostcode()"
+            onclick="execDaumPostcode()"
             value="우편번호 찾기"
           /><br />
         </div>
@@ -112,7 +112,7 @@
           <input
             type="text"
             class="form-control"
-            placeholder="도로주소"
+            placeholder="도로명 또는 지번주소"
             name="address1"
             id="address1"
           />
@@ -128,9 +128,9 @@
             id="address2"
           />
         </div>
-        <div class="input-group mb-4">
+        <!-- <div class="input-group mb-4">
           <input type="text" id="sample4_extraAddress" placeholder="참고항목" />
-        </div>
+        </div> -->
         <!-- 다음 우편 api :주소체계 번지 -> 길  -->
 
         <div class="container" style="text-align: right">
@@ -211,7 +211,7 @@
   }
 
   //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-  function sample4_execDaumPostcode() {
+  function execDaumPostcode() {
     new daum.Postcode({
       oncomplete: function (data) {
         // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -239,7 +239,7 @@
         // 우편번호와 주소 정보를 해당 필드에 넣는다.
         document.getElementById("zipcode").value = data.zonecode;
         document.getElementById("address1").value = roadAddr;
-        // document.getElementById("address1").value = data.jibunAddress; // 지번주소도 도로명주소에 넣는다.
+        document.getElementById("address1").value = data.jibunAddress; // 지번주소도 도로명주소에 넣는다.
 
         // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
         // if (roadAddr !== "") {

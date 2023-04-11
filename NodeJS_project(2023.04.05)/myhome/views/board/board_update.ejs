@@ -97,12 +97,27 @@
 </html>
 
 <script>
-  let btnSave = document.getElementById("btnSave");
-  btnSave.addEventListener("click", () => {
-    document.myform.method = "post";
-    document.myform.action = "/board/updateGo"; // name 속성 사용
-    // document.getElementById("myform").action = "/board/save";
-    document.myform.submit(); // 서버로 제출
+  $("#btnSave").click(() => {
+    let id = $("#id").val();
+    let title = $("#title").val();
+    let contents = $("#contents").val();
+
+    $.ajax({
+      url: "/board/updateGo",
+      data: { id: id, title: title, contents: contents },
+      method: "post",
+      dataType: "json",
+    })
+      .then((result) => {
+        if (result.result == "success") {
+          window.alert("게시글 수정 완료되었습니다");
+          location.href = "../list/1"; // GET방식, a - anchor 태그 http://127.0.0.1:3000/board/list/1
+        } else {
+          window.alert("게시글 수정에 실패하였습니다");
+        }
+      })
+      .catch((res, status, error) => {
+        console.log(status);
+      });
   });
-  // };
 </script>

@@ -92,6 +92,7 @@ order by id
 ) A
 limit 0, 10;
 
-
+INSERT INTO tb_board(title, writer, wdate, contents)
+VALUES('제목', 'mung', NOW(), '내용');
 
 

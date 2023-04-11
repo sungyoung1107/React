@@ -1,3 +1,6 @@
+<!-- <% %> (EJS 문법) 
+<% %> 안에 JavaScript 코드를 작성할 수 있습니다.-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +17,7 @@
   </head>
   <body>
     <form name="myform" id="myform">
-      <input type="hidden" name="pg" id="pg" value="<%=pg%>">
+      <input type="hidden" name="pg" id="pg" value="<%=pg%>"> <!--hidden 태그를 이용하여 form 데이터에 담아 서버로 보낼 수 있음-->
     <%-include('../layout/header.ejs')%>
     <div class="container" style="margin-top: 80px">
       <h2>게시판 목록</h2>
@@ -52,8 +55,8 @@
         <tbody> <!--http://localhost:3000/board/list/1-->
           <%for (board of boardList) { %>
           <tr>
-            <td><%=totalCnt-board.num+1%></a></td>
-            <td><a href="/board/view/<%=totalCnt-board.num+1%>"><%=board.title%></a></td>
+            <td><%=totalCnt-board.num+1%></a></td> <!-- 59 - 59 + 1 -->
+            <td><a href="/board/view/<%=board.id%>"><%=board.title%></a></td> <!-- 이쪽은 id -->
             <td><%=board.username%></td>
             <td><%=board.wdate%></td>
           </tr>
@@ -81,8 +84,8 @@
 <script>
   function goPage(pg)
   {
-    $("#pg").val(pg);
-    $("#myform").prop("action", "/board/list/"+pg);
-    $("#myform").submit();
+    $("#pg").val(pg); // pg 세팅
+    $("#myform").prop("action", "/board/list/"+pg); // 경로 이동
+    $("#myform").submit(); // 서버로 제출
   }
 </script>

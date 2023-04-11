@@ -64,6 +64,7 @@
 </html>
 
 <script>
+  // 내가 한 함수
   function goWrite() {
     let params = $("#myform").serialize(); // POST여야 하고, 파일 전송시 사용 못한다.
     console.log(params);
@@ -122,11 +123,14 @@
       .done((res) => {
         console.log(res.result);
         if (res.result == "success") {
-          alert(res.msg);
+          alert(res.msg); //  왜 두번?
           location.href = "/";
+        } else {
+          alert(res.msg); //  왜 두번?
         }
       })
       .fail((res, status, error) => {
+        alert(res.msg);
         console.log(status);
       });
   }

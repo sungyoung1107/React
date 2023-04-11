@@ -19,67 +19,67 @@
     <form id="myform" name="myform">
       <div class="container" style="margin-top: 80px">
         <h2>게시판 쓰기</h2>
-        <form name="myform">
-          <table class="table table-hover" style="margin-top: 30px">
-            <colgroup>
-              <col width="25%" />
-              <col width="*" />
-            </colgroup>
-            <tbody>
-              <tr>
-                <td>제목</td>
-                <td>
-                  <div class="mb-3" style="margin-top: 13px">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="title"
-                      name="title"
-                      placeholder="제목을 입력하세요"
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>작성자</td>
-                <td>
-                  <div class="mb-3" style="margin-top: 13px">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="writer"
-                      name="writer"
-                      placeholder="이름을 입력하세요"
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>내용</td>
-                <td>
-                  <div class="mb-3" style="margin-top: 13px">
-                    <textarea
-                      class="form-control"
-                      rows="5"
-                      id="contents"
-                      name="contents"
-                    ></textarea>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div>
-            <button
-              type="button"
-              id="btnSave"
-              class="btn btn-secondary"
-              style="float: right"
-            >
-              게시글올리기
-            </button>
-          </div>
-        </form>
+        <table class="table table-hover" style="margin-top: 30px">
+          <colgroup>
+            <col width="25%" />
+            <col width="*" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <td>제목</td>
+              <td>
+                <div class="mb-3" style="margin-top: 13px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    name="title"
+                    placeholder="제목을 입력하세요"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>작성자</td>
+              <td>
+                <div class="mb-3" style="margin-top: 13px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="writer"
+                    name="writer"
+                    placeholder="이름"
+                    value="<%=session['userid']%>"
+                    readonly
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>내용</td>
+              <td>
+                <div class="mb-3" style="margin-top: 13px">
+                  <textarea
+                    class="form-control"
+                    rows="5"
+                    id="contents"
+                    name="contents"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <button
+            type="button"
+            id="btnSave"
+            class="btn btn-secondary"
+            style="float: right"
+          >
+            게시글올리기
+          </button>
+        </div>
         <!-- <div class="container mt-3" style="text-align: right">
         <a href="#" class="btn btn-secondary">Link Button</a>
         <button type="button" class="btn btn-secondary">Button</button>
@@ -93,7 +93,6 @@
 </html>
 
 <script>
-  // window.onload = () => {
   let btnSave = document.getElementById("btnSave");
   btnSave.addEventListener("click", () => {
     document.myform.method = "post";
@@ -101,5 +100,4 @@
     // document.getElementById("myform").action = "/board/save";
     document.myform.submit(); // 서버로 제출
   });
-  // };
 </script>
