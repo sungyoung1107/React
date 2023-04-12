@@ -6,11 +6,13 @@ let logger = require("morgan");
 const session = require("express-session");
 const MYSQLSTORE = require("express-mysql-session")(session);
 const DBInfo = require("./routes/commonDB"); // DB 정보를 주어야 세션을 저장시킬 수 있다.
+const cors = require("cors");
 
 let indexRouter = require("./routes/index");
 let usersRouter = require("./routes/users");
 let boardRouter = require("./routes/board");
 let memberRouter = require("./routes/member");
+let heroRouter = require("./routes/hero");
 
 let app = express();
 
@@ -35,6 +37,8 @@ app.use(
     saveUninitialized: false,
   })
 );
+// 라우터 위로
+app.use(cors()); // 보다 정밀하게 받는 방법 찾아서 작성해야 한다. 특정 ip만 받는다던지.. 현재는 다 받겠다라는 것!!
 
 // 미들웨어 - 모든 웹상의 요청이 거쳐간다.
 app.use("/", indexRouter);
@@ -43,6 +47,7 @@ app.use("/users", usersRouter);
 app.use("/board", boardRouter);
 // url이 /member 시작할 경우 memberRouter가 처리한다.
 app.use("/member", memberRouter);
+app.use("/hero", heroRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
