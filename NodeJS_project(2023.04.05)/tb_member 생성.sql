@@ -34,3 +34,4 @@ SELECT * FROM tb_member;
 -- 자동 COMMIT임
 INSERT INTO tb_member(title, writer, contents, wdate)
 VALUES ('제목1','홍길동','내용1', NOW()); 
+note

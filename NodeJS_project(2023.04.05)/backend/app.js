@@ -13,6 +13,7 @@ let usersRouter = require("./routes/users");
 let boardRouter = require("./routes/board");
 let memberRouter = require("./routes/member");
 let heroRouter = require("./routes/hero");
+let scoreRouter = require("./routes/score");
 
 let app = express();
 
@@ -48,6 +49,7 @@ app.use("/board", boardRouter);
 // url이 /member 시작할 경우 memberRouter가 처리한다.
 app.use("/member", memberRouter);
 app.use("/hero", heroRouter);
+app.use("/score", scoreRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
