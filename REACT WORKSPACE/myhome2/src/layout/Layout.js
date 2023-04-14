@@ -25,6 +25,11 @@ function Layout(props) {
                 성적리스트
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/hero/list">
+                영웅리스트
+              </NavLink>
+            </li>
           </ul>
           {/* component가 출력되는 위치 */}
         </div>

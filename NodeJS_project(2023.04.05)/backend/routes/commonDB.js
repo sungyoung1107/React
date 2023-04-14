@@ -6,7 +6,7 @@ const DBInfo = {
   host: "localhost",
   user: "USER01",
   password: "1234",
-  database: "score",
+  database: "mydb",
   port: 3306,
 };
 

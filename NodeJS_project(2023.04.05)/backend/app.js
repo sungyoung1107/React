@@ -14,6 +14,7 @@ let boardRouter = require("./routes/board");
 let memberRouter = require("./routes/member");
 let heroRouter = require("./routes/hero");
 let scoreRouter = require("./routes/score");
+let RestBoardRouter = require("./routes/rest_board");
 
 let app = express();
 
@@ -50,6 +51,7 @@ app.use("/board", boardRouter);
 app.use("/member", memberRouter);
 app.use("/hero", heroRouter);
 app.use("/score", scoreRouter);
+app.use("/rest_board", RestBoardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

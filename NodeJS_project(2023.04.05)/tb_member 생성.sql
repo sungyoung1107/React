@@ -34,4 +34,5 @@ SELECT * FROM tb_member;
 -- 자동 COMMIT임
 INSERT INTO tb_member(title, writer, contents, wdate)
 VALUES ('제목1','홍길동','내용1', NOW()); 
-note
+
+select A.id, A.title, A.writer, date_format(A.wdate, '%Y-%m-%d') wdate (select username from tb_member B where A.writer=B.userid) username from tb_board A where id=68;

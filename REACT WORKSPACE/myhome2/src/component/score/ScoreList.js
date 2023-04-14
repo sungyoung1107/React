@@ -16,7 +16,8 @@ function ScoreList(props) {
         .then((res) => {
           setScoreList(res.data.scoreList);
           setLoading(true);
-          console.log(res.data.scoreList);
+          console.log(res.data.scoreList); // 배열형태
+          console.log(res.data);
           console.log(loading);
         })
         .catch((error) => {

@@ -10,26 +10,22 @@ import {
   useParams,
 } from "react-router-dom";
 
-function BoardWrite(props) {
-  const [title, setTitle] = useState("");
-  const [contents, setContents] = useState("");
-  const [writer, setWriter] = useState("");
+function HeroWrite(props) {
+  const [heroName, setHeroName] = useState("");
+  const [heroDesc, setHeroDesc] = useState("");
 
-  let history = useNavigate(); // 링크 가기 위해서
+  let history = useNavigate();
   let { id } = useParams(); // 보내는 쪽에서 json 객체로 보냄
 
   useEffect(() => {
-    console.log("id는 ", id);
+    console.log("id ", id);
     async function loadData() {
-      let results = await axios.get(SERVERIP + "/rest_board/view/" + id);
+      let results = await axios.get(SERVERIP + "/hero/view/" + id);
+      console.log("해당 id의 이름은" + results.data.hero.hero_name);
+      console.log("해당 id의 업적은" + results.data.hero.hero_desc);
 
-      console.log("해당 제목은" + results.data.boardData.title);
-      console.log("해당 내용은" + results.data.boardData.contents);
-      console.log("해당 작성자는" + results.data.boardData.writer);
-
-      setTitle(results.data.boardData.title);
-      setContents(results.data.boardData.contents);
-      setWriter(results.data.boardData.writer);
+      setHeroName(results.data.hero.hero_name);
+      setHeroDesc(results.data.hero.hero_desc);
     }
 
     if (id != undefined) loadData(); // write가 아니고 view를 호출할 때
@@ -40,28 +36,24 @@ function BoardWrite(props) {
     */
   });
 
-  const titleChange = (e) => {
-    setTitle(e.target.value);
+  const nameChange = (e) => {
+    setHeroName(e.target.value);
   };
 
-  const contentsChange = (e) => {
-    setContents(e.target.value);
-  };
-
-  const writerChange = (e) => {
-    setWriter(e.target.value);
+  const descChange = (e) => {
+    setHeroDesc(e.target.value);
   };
 
   // 서버로 전송하기
   const postData = () => {
     // 데이터를 json으로 묶어서 보내야 한다.
-    let data = { title: title, contents: contents, writer: writer };
+    let data = { hero_name: heroName, hero_desc: heroDesc };
 
     axios
-      .post(SERVERIP + "/rest_board/write", data)
+      .post(SERVERIP + "/hero/write", data)
       .then((res) => {
         console.log(res.data);
-        history("/board/list"); //redirect에 대응
+        history("/hero/list"); //redirect에 대응
       })
       .catch((error) => {
         console.log(error);
@@ -77,24 +69,7 @@ function BoardWrite(props) {
         </colgroup>
         <tbody>
           <tr>
-            <td>제목</td>
-            <td>
-              <div className="mb-3" style={{ marginTop: "13px" }}>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="title"
-                  name="title"
-                  placeholder="제목"
-                  onChange={titleChange}
-                  value={title}
-                  // readonly
-                />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>작성자</td>
+            <td>이름</td>
             <td>
               <div className="mb-3" style={{ marginTop: "13px" }}>
                 <input
@@ -103,26 +78,26 @@ function BoardWrite(props) {
                   id="writer"
                   name="writer"
                   placeholder="이름"
-                  onChange={writerChange}
-                  value={writer}
-                  // readonly
+                  onChange={nameChange}
+                  value={heroName}
+                  readonly
                 />
               </div>
             </td>
           </tr>
           <tr>
-            <td>내용</td>
+            <td>업적</td>
             <td>
               <div className="mb-3" style={{ marginTop: "13px" }}>
-                <input
-                  type="text"
+                <textarea
                   className="form-control"
+                  rows="5"
                   id="contents"
                   name="contents"
-                  placeholder="내용"
-                  onChange={contentsChange}
-                  value={contents}
-                />
+                  onChange={descChange}
+                  value={heroDesc}
+                  placeholder="내용을 입력하세요"
+                ></textarea>
               </div>
             </td>
           </tr>
@@ -139,4 +114,4 @@ function BoardWrite(props) {
   );
 }
 
-export default BoardWrite;
+export default HeroWrite;

@@ -35,7 +35,7 @@ function getPaging(pg, totalCnt, pageGroupSize = 10) {
   return { pnTotal: pnTotal, pnStart: pgGroupStart, pnEnd: pgGroupEnd, pg: pg };
 }
 
-for (i = 1; i <= 32; i++) getPaging(i, 320);
+// for (i = 1; i <= 32; i++) getPaging(i, 320);
 
 // 함수 노출
 exports.getPaging = getPaging;
@@ -48,3 +48,40 @@ exports.getPaging = getPaging;
 그러나 전체 페이지 수(pnTotal)는 32이므로, 다음 페이지 그룹이 존재하지 않습니다.
 따라서, 위 조건문이 실행되어 pgGroupEnd = pnTotal + 1;이 되어 마지막 페이지를 끝 페이지로 지정해주게 됩니다.
 */
+
+// undefined 체크해주고, int 범위 체크해주고, 자료형 체크해주고
+// checkInfos //
+// checkInfos = [
+//   { key: "title", type: "str", range: 40 },
+//   { key: "writer", type: "str", range: 40 },
+//   { key: "contents", type: "str", range: -1 },
+// ];
+function checkInfo(req, checkInfos) {
+  msg = ""; // 검사 결과 메세지
+  result = 0; // 검사 결과 코드 (0: 문제 없음, 1: 문제 있음)
+  resultInfo = {}; // 검사 결과를 담는 객체
+  for (info of checkInfos) {
+    console.log("여기" + info.key); // title, writer, contents
+
+    if (req.body[info.key] == undefined) {
+      msg = info.key + "is empty";
+      result = 1;
+      req.body[info.key] = "";
+    }
+    //타입 체크, 범위 체크
+    if (
+      info.type == "str" &&
+      info.range !== -1 &&
+      req.body[info.key].length > info.range
+    ) {
+      msg += info.key + "range error";
+    }
+    resultInfo[info.key] = req.body[info.key];
+    resultInfo["result"] = result;
+    resultInfo["msg"] = msg;
+  }
+
+  return resultInfo;
+}
+// 외부에서 사용하기 위해서 exports
+exports.checkInfo = checkInfo;

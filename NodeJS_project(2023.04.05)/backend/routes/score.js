@@ -8,11 +8,11 @@ router.use(express.urlencoded({ extended: false }));
 /* GET home page. */
 
 /* 기본 페이지 */
-router.get("/list", async function (req, res, next) {
-  let sql = `select id, user_name, kor, eng, mat from tb_score`;
-  let results = await commonDB.mysqlRead(sql, []);
-  console.log(results);
-  res.json({ scoreList: results });
-});
+// router.get("/list", async function (req, res, next) {
+//   let sql = `select id, user_name, kor, eng, mat from tb_score`;
+//   let results = await commonDB.mysqlRead(sql, []);
+//   console.log(results);
+//   res.json({ scoreList: results });
+// });
 
 module.exports = router;

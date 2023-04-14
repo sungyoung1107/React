@@ -96,3 +96,4 @@ INSERT INTO tb_board(title, writer, wdate, contents)
 VALUES('제목', 'mung', NOW(), '내용');
 
 
+SELECT * FROM tb_board;

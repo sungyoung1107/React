@@ -27,4 +27,4 @@ VALUES ('강감찬','귀주대첩',NOW());
 INSERT INTO tb_hero(hero_name, hero_desc, wdate)
 VALUES ('서희','강동6주',NOW());
 
-SELECT A.id, A.hero_name, A.hero_desc, A.wdate FROM tb_hero A;
+SELECT A.id, A.hero_name, A.hero_desc, A.wdate FROM tb_hero A;testscore
